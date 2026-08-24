@@ -52,6 +52,13 @@ export const Artists: React.FC<ArtistsProps> = ({ onSelectArtistForBooking }) =>
                   src={artist.image}
                   alt={artist.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== `/images/${artist.id}-shah.jpg` && !target.dataset.failed) {
+                      target.dataset.failed = 'true';
+                      target.src = artist.id === 'maya' ? '/images/maya-shah.jpg' : artist.id === 'riya' ? '/images/riya-mehta.jpg' : '/images/anaya-kapoor.jpg';
+                    }
+                  }}
                   className="w-full h-full object-cover object-top transform transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0 brightness-95 group-hover:brightness-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5A2738]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">

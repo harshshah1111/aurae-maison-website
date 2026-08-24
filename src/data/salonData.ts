@@ -237,7 +237,7 @@ export const ARTISTS: Artist[] = [
     name: 'MAYA SHAH',
     role: 'Creative Hair Director',
     specialty: 'Bespoke Balayage & French Silhouette Cutting',
-    image: '/images/maya-shah.jpg',
+    image: 'https://i.ibb.co/zhXBR40T/images-4.jpg',
     bio: '14 years honing precision techniques across London and Mumbai. Known for creating weightless, natural movement.',
   },
   {
@@ -245,7 +245,7 @@ export const ARTISTS: Artist[] = [
     name: 'RIYA MEHTA',
     role: 'Skin Specialist',
     specialty: 'Dermal Sculpting & Oxygen Infusion Therapy',
-    image: '/images/riya-mehta.jpg',
+    image: 'https://i.ibb.co/21TPCXwf/images-3.jpg',
     bio: 'Trained in Paris and Tokyo, Riya specializes in holistic facial contouring and deep cellular radiance.',
   },
   {
@@ -253,7 +253,7 @@ export const ARTISTS: Artist[] = [
     name: 'ANAYA KAPOOR',
     role: 'Beauty Artist',
     specialty: 'Editorial Makeup & Brow Architecture',
-    image: '/images/anaya-kapoor.jpg',
+    image: 'https://i.ibb.co/Swpcnkdh/images-2.jpg',
     bio: 'Lead artist for premier fashion campaigns. Champion of luminous, skin-focused minimalist beauty.',
   },
 ];
@@ -264,7 +264,7 @@ export const GALLERY_IMAGES: GalleryItem[] = [
     number: '01',
     category: 'HAIR',
     title: 'Signature Styling',
-    image: '/images/gallery-01.jpg',
+    image: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=85',
     aspect: 'aspect-[3/4]',
   },
   {
@@ -304,7 +304,7 @@ export const GALLERY_IMAGES: GalleryItem[] = [
     number: '06',
     category: 'BEAUTY',
     title: 'Editorial Makeup Finish',
-    image: '/images/gallery-06.jpg',
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=85',
     aspect: 'aspect-[3/4]',
   },
   {
