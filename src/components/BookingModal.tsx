@@ -4,6 +4,7 @@ import { X, Check, Calendar, Clock, MapPin, User, Phone, Mail, Sparkles, ArrowLe
 import { ALL_SERVICES, ARTISTS, SALON_INFO } from '../data/salonData';
 import { BookingData, ServiceCategory, Artist } from '../types';
 import { analytics } from '../services/analytics';
+import GradualBlur from './GradualBlur';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -171,7 +172,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         </div>
 
         {/* Content Area */}
-        <div className="p-6 sm:p-8 overflow-y-auto grow">
+        <div className="relative grow overflow-hidden flex flex-col min-h-0">
+          <div className="p-6 sm:p-8 overflow-y-auto grow">
           {!submitted ? (
             <div>
               {/* Step indicator */}
@@ -658,6 +660,25 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </button>
             </motion.div>
           )}
+          </div>
+
+          <GradualBlur
+            target="parent"
+            position="top"
+            height="1.5rem"
+            strength={1.5}
+            divCount={4}
+            opacity={0.8}
+          />
+          <GradualBlur
+            target="parent"
+            position="bottom"
+            height="2rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            opacity={0.85}
+          />
         </div>
 
         {/* Footer Navigation Buttons */}

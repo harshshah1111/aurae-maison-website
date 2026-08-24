@@ -4,6 +4,7 @@ import { X, ArrowRight, Sparkles } from 'lucide-react';
 import { ALL_SERVICES } from '../data/salonData';
 import { ServiceCategory, ServiceItem } from '../types';
 import { analytics } from '../services/analytics';
+import GradualBlur from './GradualBlur';
 
 interface ServicesModalProps {
   isOpen: boolean;
@@ -84,50 +85,70 @@ export const ServicesModal: React.FC<ServicesModalProps> = ({
           ))}
         </div>
 
-        {/* Editorial Rows List */}
-        <div className="p-6 sm:p-10 overflow-y-auto grow divide-y divide-[#E8A7B8]/20">
-          {currentServices.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              onClick={() => handleSelect(service)}
-              className="group py-6 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer hover:bg-[#F6DDE3]/30 px-4 -mx-4 rounded-xl transition-colors"
-            >
-              <div className="max-w-xl">
-                <div className="flex items-center space-x-3 mb-1.5">
-                  <h4 className="font-serif-luxury text-2xl text-[#5A2738] font-light group-hover:text-[#5A2738] transition-colors">
-                    {service.name}
-                  </h4>
-                  {service.tag && (
-                    <span className="inline-flex items-center space-x-1 text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F6DDE3] text-[#5A2738] font-medium border border-[#E8A7B8]/40">
-                      <Sparkles className="w-2.5 h-2.5 text-[#5A2738]" />
-                      <span>{service.tag}</span>
+        {/* Editorial Rows List with GradualBlur Edge Transitions */}
+        <div className="relative grow overflow-hidden flex flex-col min-h-0">
+          <div className="p-6 sm:p-10 overflow-y-auto grow divide-y divide-[#E8A7B8]/20">
+            {currentServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                onClick={() => handleSelect(service)}
+                className="group py-6 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer hover:bg-[#F6DDE3]/30 px-4 -mx-4 rounded-xl transition-colors"
+              >
+                <div className="max-w-xl">
+                  <div className="flex items-center space-x-3 mb-1.5">
+                    <h4 className="font-serif-luxury text-2xl text-[#5A2738] font-light group-hover:text-[#5A2738] transition-colors">
+                      {service.name}
+                    </h4>
+                    {service.tag && (
+                      <span className="inline-flex items-center space-x-1 text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F6DDE3] text-[#5A2738] font-medium border border-[#E8A7B8]/40">
+                        <Sparkles className="w-2.5 h-2.5 text-[#5A2738]" />
+                        <span>{service.tag}</span>
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-[#5A2738]/75 font-sans-refined font-light leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between sm:justify-end space-x-6 shrink-0 pt-2 sm:pt-0">
+                  <div className="text-left sm:text-right font-sans-refined">
+                    <span className="block text-sm font-semibold text-[#5A2738]">
+                      {service.price}
                     </span>
-                  )}
-                </div>
-                <p className="text-xs text-[#5A2738]/75 font-sans-refined font-light leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
+                    <span className="block text-[11px] text-[#5A2738]/60 tracking-wider">
+                      {service.duration}
+                    </span>
+                  </div>
 
-              <div className="flex items-center justify-between sm:justify-end space-x-6 shrink-0 pt-2 sm:pt-0">
-                <div className="text-left sm:text-right font-sans-refined">
-                  <span className="block text-sm font-semibold text-[#5A2738]">
-                    {service.price}
-                  </span>
-                  <span className="block text-[11px] text-[#5A2738]/60 tracking-wider">
-                    {service.duration}
-                  </span>
+                  <div className="w-10 h-10 rounded-full bg-[#FFFFFF] border border-[#E8A7B8]/40 group-hover:bg-[#5A2738] text-[#5A2738] group-hover:text-[#FFF9FA] flex items-center justify-center transition-all duration-300 transform group-hover:translate-x-1 shadow-xs">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
 
-                <div className="w-10 h-10 rounded-full bg-[#FFFFFF] border border-[#E8A7B8]/40 group-hover:bg-[#5A2738] text-[#5A2738] group-hover:text-[#FFF9FA] flex items-center justify-center transition-all duration-300 transform group-hover:translate-x-1 shadow-xs">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <GradualBlur
+            target="parent"
+            position="top"
+            height="2rem"
+            strength={1.5}
+            divCount={4}
+            opacity={0.85}
+          />
+          <GradualBlur
+            target="parent"
+            position="bottom"
+            height="2.5rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            opacity={0.9}
+          />
         </div>
 
         {/* Footer Note */}

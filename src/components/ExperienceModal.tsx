@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { X, Sparkles, HeartHandshake, ShieldCheck, Flower2 } from 'lucide-react';
 import { EXPERIENCE_STEPS } from '../data/salonData';
+import GradualBlur from './GradualBlur';
 
 interface ExperienceModalProps {
   isOpen: boolean;
@@ -43,86 +44,106 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
           </button>
         </div>
 
-        {/* Storytelling Content */}
-        <div className="p-6 sm:p-10 overflow-y-auto grow space-y-10">
-          {/* Visual Hero Quote */}
-          <div className="relative rounded-2xl overflow-hidden bg-[#5A2738] border border-[#E8A7B8]/30 p-8 sm:p-12 text-center text-[#FFF9FA]">
-            <img
-              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=85"
-              alt="AURAÉ Atmosphere"
-              referrerPolicy="no-referrer"
-              className="absolute inset-0 w-full h-full object-cover filter brightness-45"
-            />
-            <div className="relative z-10 max-w-lg mx-auto">
-              <span className="text-[10px] uppercase tracking-[0.35em] text-[#E8A7B8] block mb-3 font-sans-refined">
-                Arrive. Unwind. Become.
-              </span>
-              <h4 className="font-serif-luxury text-2xl sm:text-3xl font-light italic leading-snug">
-                &ldquo;Every appointment is a private interlude crafted around quiet luxury and deliberate precision.&rdquo;
+        {/* Storytelling Content with GradualBlur Overlays */}
+        <div className="relative grow overflow-hidden flex flex-col min-h-0">
+          <div className="p-6 sm:p-10 overflow-y-auto grow space-y-10">
+            {/* Visual Hero Quote */}
+            <div className="relative rounded-2xl overflow-hidden bg-[#5A2738] border border-[#E8A7B8]/30 p-8 sm:p-12 text-center text-[#FFF9FA]">
+              <img
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=85"
+                alt="AURAÉ Atmosphere"
+                referrerPolicy="no-referrer"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-45"
+              />
+              <div className="relative z-10 max-w-lg mx-auto">
+                <span className="text-[10px] uppercase tracking-[0.35em] text-[#E8A7B8] block mb-3 font-sans-refined">
+                  Arrive. Unwind. Become.
+                </span>
+                <h4 className="font-serif-luxury text-2xl sm:text-3xl font-light italic leading-snug">
+                  &ldquo;Every appointment is a private interlude crafted around quiet luxury and deliberate precision.&rdquo;
+                </h4>
+              </div>
+            </div>
+
+            {/* 4-Step Sensory Journey */}
+            <div className="space-y-6">
+              <h4 className="font-serif-luxury text-2xl text-[#5A2738] border-b border-[#E8A7B8]/20 pb-3">
+                The Four Pillars of Every Visit
               </h4>
-            </div>
-          </div>
 
-          {/* 4-Step Sensory Journey */}
-          <div className="space-y-6">
-            <h4 className="font-serif-luxury text-2xl text-[#5A2738] border-b border-[#E8A7B8]/20 pb-3">
-              The Four Pillars of Every Visit
-            </h4>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {EXPERIENCE_STEPS.map((step) => (
-                <div
-                  key={step.step}
-                  className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8A7B8]/30 shadow-xs flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="text-xs font-sans-refined uppercase tracking-[0.25em] text-[#E8A7B8] font-bold block mb-2">
-                      {step.step}
-                    </span>
-                    <h5 className="font-serif-luxury text-xl text-[#5A2738] mb-2 font-normal">
-                      {step.title}
-                    </h5>
-                    <p className="text-xs text-[#5A2738]/75 font-sans-refined font-light leading-relaxed">
-                      {step.text}
-                    </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {EXPERIENCE_STEPS.map((step) => (
+                  <div
+                    key={step.step}
+                    className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8A7B8]/30 shadow-xs flex flex-col justify-between"
+                  >
+                    <div>
+                      <span className="text-xs font-sans-refined uppercase tracking-[0.25em] text-[#E8A7B8] font-bold block mb-2">
+                        {step.step}
+                      </span>
+                      <h5 className="font-serif-luxury text-xl text-[#5A2738] mb-2 font-normal">
+                        {step.title}
+                      </h5>
+                      <p className="text-xs text-[#5A2738]/75 font-sans-refined font-light leading-relaxed">
+                        {step.text}
+                      </p>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sanctuary Touchpoints */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-[#E8A7B8]/20 text-center">
+              <div className="flex flex-col items-center p-4">
+                <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
+                  <Flower2 className="w-5 h-5 text-[#5A2738]" />
                 </div>
-              ))}
+                <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Pure Botanicals</h6>
+                <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
+                  Cruelty-free, bio-mimetic formulations from France and Japan.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center p-4">
+                <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
+                  <ShieldCheck className="w-5 h-5 text-[#5A2738]" />
+                </div>
+                <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Private Suites</h6>
+                <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
+                  Acoustically treated private booths for total discretion.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center p-4">
+                <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
+                  <HeartHandshake className="w-5 h-5 text-[#5A2738]" />
+                </div>
+                <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Concierge Care</h6>
+                <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
+                  Continuous post-treatment aesthetic advisory and home regimens.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Sanctuary Touchpoints */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-[#E8A7B8]/20 text-center">
-            <div className="flex flex-col items-center p-4">
-              <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
-                <Flower2 className="w-5 h-5 text-[#5A2738]" />
-              </div>
-              <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Pure Botanicals</h6>
-              <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
-                Cruelty-free, bio-mimetic formulations from France and Japan.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center p-4">
-              <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
-                <ShieldCheck className="w-5 h-5 text-[#5A2738]" />
-              </div>
-              <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Private Suites</h6>
-              <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
-                Acoustically treated private booths for total discretion.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center p-4">
-              <div className="w-10 h-10 rounded-full bg-[#F6DDE3] flex items-center justify-center text-[#5A2738] mb-3">
-                <HeartHandshake className="w-5 h-5 text-[#5A2738]" />
-              </div>
-              <h6 className="font-serif-luxury text-lg mb-1 text-[#5A2738]">Concierge Care</h6>
-              <p className="text-[11px] text-[#5A2738]/65 font-sans-refined">
-                Continuous post-treatment aesthetic advisory and home regimens.
-              </p>
-            </div>
-          </div>
+          <GradualBlur
+            target="parent"
+            position="top"
+            height="2rem"
+            strength={1.5}
+            divCount={4}
+            opacity={0.85}
+          />
+          <GradualBlur
+            target="parent"
+            position="bottom"
+            height="2.5rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            opacity={0.9}
+          />
         </div>
 
         {/* Action Bar */}
