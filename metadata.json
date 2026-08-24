@@ -1,0 +1,6 @@
+{
+  "name": "AURAÉ MAISON",
+  "description": "Luxury Aesthetic Salon & Beauty Atelier in Mumbai featuring bespoke hair, skin, and beauty experiences with editorial storytelling and guided booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
