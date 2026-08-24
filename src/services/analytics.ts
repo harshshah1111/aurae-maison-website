@@ -53,6 +53,15 @@ class AnalyticsTracker {
     if (process.env.NODE_ENV !== 'production') {
       console.log(`[AURAÉ Analytics] ${event}`, metadata || '');
     }
+
+    // Forward to Google Analytics gtag if loaded
+    if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: Function }).gtag === 'function') {
+      try {
+        (window as unknown as { gtag: Function }).gtag('event', event, metadata || {});
+      } catch {
+        // ignore gtag tracking errors
+      }
+    }
   }
 
   public getEvents(): AnalyticsEvent[] {
