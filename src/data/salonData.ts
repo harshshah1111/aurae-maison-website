@@ -237,7 +237,7 @@ export const ARTISTS: Artist[] = [
     name: 'MAYA SHAH',
     role: 'Creative Hair Director',
     specialty: 'Bespoke Balayage & French Silhouette Cutting',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85',
+    image: 'https://images.unsplash.com/photo-1618721405821-80ebc4b63d2f?auto=format&fit=crop&w=900&q=85',
     bio: '14 years honing precision techniques across London and Mumbai. Known for creating weightless, natural movement.',
   },
   {
@@ -288,7 +288,7 @@ export const GALLERY_IMAGES: GalleryItem[] = [
     number: '04',
     category: 'SKIN',
     title: 'Luminous Dermal Glow',
-    image: 'https://images.unsplash.com/photo-1512290900672-1f5be669d066?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=85',
     aspect: 'aspect-[4/5]',
   },
   {
